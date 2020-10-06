@@ -12,3 +12,16 @@
 .high-score:hover {
   transform: scale(1.025);
 }
+
+table{
+  width: 80%;
+  font-size: 30px;
+  margin: 30px;
+}
+
+thead{
+  font-size: 40px;
+}
+tbody{
+  text-align: center;
+}
