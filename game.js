@@ -13,13 +13,14 @@ let acceptingAnswers = false;
 let score = 0;
 let questionCounter = 0;
 let availableQuesions = [];
-
+let timer;
+let timerInstance;
 let questions = [];
 
 
 fetch(
-    'https://opentdb.com/api.php?amount=10&category=9&difficulty=easy&type=multiple'
-).then((res) => {
+        'https://opentdb.com/api.php?amount=10&category=9&difficulty=easy&type=multiple'
+    ).then((res) => {
         return res.json();
     })
     .then((loadedQuestions) => {
@@ -62,8 +63,19 @@ startGame = () => {
     game.classList.remove('hidden');
     setTimeout(() => {
         updateProgressBar()
-    }, 0)
+    }, 0);
 };
+
+startTimer = () => {
+    return setInterval(() => {
+        if (timer > 0) {
+            timer--;
+            document.querySelector('.hud-timer .hud-time-remain').innerHTML = timer;
+        } else{
+            getNewQuestion();
+        }
+    }, 1000);
+}
 
 updateProgressBar = () => {
     progressBarFull.style.width = `${(questionCounter / MAX_QUESTIONS) * 100}%`
@@ -81,7 +93,7 @@ getNewQuestion = () => {
     progressText.innerText = `Question ${questionCounter}/${MAX_QUESTIONS}`;
 
     // needs to animate after DOM loads...
-    if(questionCounter > 1) {
+    if (questionCounter > 1) {
         updateProgressBar()
     }
 
@@ -95,7 +107,12 @@ getNewQuestion = () => {
     });
 
     availableQuesions.splice(questionIndex, 1);
+    document.querySelector('.hud-timer .hud-time-remain').innerHTML = "20";
+    timer = 20;
+    clearInterval(timerInstance);
+    timerInstance = startTimer();
     acceptingAnswers = true;
+
 };
 
 choices.forEach((choice) => {

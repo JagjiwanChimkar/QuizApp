@@ -73,7 +73,7 @@
   align-items: center;
 }
 
-#loader-container > #loader {
+#loader-container>#loader {
   border: 1.6rem solid white;
   border-radius: 50%;
   border-top: 1.6rem solid #56a5eb;
@@ -86,6 +86,7 @@
   0% {
     transform: rotate(0deg);
   }
+
   100% {
     transform: rotate(360deg);
   }
