@@ -12,6 +12,10 @@
   color: #333;
 }
 
+.noDisplay{
+  display: none;
+}
+
 h1,
 h2,
 h3,

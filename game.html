@@ -7,10 +7,16 @@
     <title>Quick Quiz - Play</title>
     <link rel="stylesheet" href="app.css" />
     <link rel="stylesheet" href="game.css" />
+    <script defer src="./game.js"></script>
   </head>
   <body>
-    <div class="container">
+
+    <div id="loader-container">
       <div id="loader"></div>
+    </div>
+
+    <div class="container">
+
       <div id="game" class="justify-center flex-column hidden">
         <div id="hud">
           <div id="hud-item">
@@ -49,6 +55,8 @@
         </div>
       </div>
     </div>
-    <script src="game.js"></script>
+    
+    <a id="endpageLink" class="noDisplay" href="./end.html">hiddenLink</a>
+
   </body>
 </html>

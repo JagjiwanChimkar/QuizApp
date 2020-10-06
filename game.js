@@ -3,7 +3,10 @@ const choices = Array.from(document.getElementsByClassName('choice-text'));
 const progressText = document.getElementById('progressText');
 const scoreText = document.getElementById('score');
 const progressBarFull = document.getElementById('progressBarFull');
+
 const loader = document.getElementById('loader');
+const loaderContainer = document.getElementById('loader-container');
+
 const game = document.getElementById('game');
 let currentQuestion = {};
 let acceptingAnswers = false;
@@ -13,10 +16,10 @@ let availableQuesions = [];
 
 let questions = [];
 
+
 fetch(
     'https://opentdb.com/api.php?amount=10&category=9&difficulty=easy&type=multiple'
-)
-    .then((res) => {
+).then((res) => {
         return res.json();
     })
     .then((loadedQuestions) => {
@@ -55,20 +58,32 @@ startGame = () => {
     score = 0;
     availableQuesions = [...questions];
     getNewQuestion();
+    loaderContainer.remove()
     game.classList.remove('hidden');
-    loader.classList.add('hidden');
+    setTimeout(() => {
+        updateProgressBar()
+    }, 0)
 };
+
+updateProgressBar = () => {
+    progressBarFull.style.width = `${(questionCounter / MAX_QUESTIONS) * 100}%`
+}
 
 getNewQuestion = () => {
     if (availableQuesions.length === 0 || questionCounter >= MAX_QUESTIONS) {
         localStorage.setItem('mostRecentScore', score);
-        //go to the end page
-        return window.location.assign('/end.html');
+        // go to the end page
+        const endLink = document.getElementById('endpageLink')
+        endLink.click()
+        return
     }
     questionCounter++;
     progressText.innerText = `Question ${questionCounter}/${MAX_QUESTIONS}`;
-    //Update the progress bar
-    progressBarFull.style.width = `${(questionCounter / MAX_QUESTIONS) * 100}%`;
+
+    // needs to animate after DOM loads...
+    if(questionCounter > 1) {
+        updateProgressBar()
+    }
 
     const questionIndex = Math.floor(Math.random() * availableQuesions.length);
     currentQuestion = availableQuesions[questionIndex];
@@ -102,7 +117,8 @@ choices.forEach((choice) => {
 
         setTimeout(() => {
             selectedChoice.parentElement.classList.remove(classToApply);
-            getNewQuestion();
+            getNewQuestion()
+
         }, 1000);
     });
 });
