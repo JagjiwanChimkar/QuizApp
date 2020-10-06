@@ -7,10 +7,10 @@ The Question for quiz are randomly picked from trivia API(https://opentdb.com/ap
 ## Pages So Far:
 
 ### Home
-![Home](https://github.com/parikshighosh3/QuizApp/Images/blob/designs/Home.png?raw=true)
+![Home](Images/Home.png)
 ### Inside
-![Inside](https://github.com/parikshighosh3/QuizApp/Images/blob/designs/Inside.png?raw=true)
+![Inside](Images/Inside.png)
 ### Scores
-![Scores](https://github.com/parikshighosh3/QuizApp/Images/blob/designs/Scores.png?raw=true)
+![Scores](Images/Scores.png)
 
 open :open_file_folder: index.html to start
