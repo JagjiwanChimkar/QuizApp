@@ -12,7 +12,7 @@
   color: #333;
 }
 
-.noDisplay{
+.noDisplay {
   display: none;
 }
 
@@ -29,7 +29,7 @@ h1 {
   margin-bottom: 5rem;
 }
 
-h1 > span {
+h1>span {
   font-size: 2.4rem;
   font-weight: 500;
 }
@@ -58,7 +58,7 @@ h3 {
   padding: 2rem;
 }
 
-.container > * {
+.container>* {
   width: 100%;
 }
 
@@ -129,4 +129,8 @@ input {
 
 input::placeholder {
   color: #aaa;
+}
+
+.hud-timer > h1{
+  text-align: center;
 }
