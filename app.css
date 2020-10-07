@@ -2,6 +2,8 @@
   background-color: #a4508b;
   background-image: linear-gradient(326deg, #a4508b 0%, #5f0a87 74%);
   font-size: 62.5%;
+  background-size: 400%;
+  animation: bg-animation 5s ease-in-out infinite;
 }
 
 * {
@@ -86,21 +88,23 @@ h3 {
 
 /* BUTTONS */
 .btn {
-  font-size: 1.8rem;
+  font-size: 3rem;
   padding: 1rem 0;
   width: 20rem;
   text-align: center;
-  border: 0.1rem solid #56a5eb;
+  /* border: 0.1rem solid #56a5eb; */
   margin-bottom: 1rem;
   text-decoration: none;
   color: #56a5eb;
   background-color: white;
+  border-radius: 4px;
+  /* box-shadow: -5px 5px 1px black; */
 }
 
 .btn:hover {
   cursor: pointer;
   box-shadow: 0 0.4rem 1.4rem 0 rgba(86, 185, 235, 0.5);
-  transform: translateY(-0.1rem);
+  transform: translateY(-5px);
   transition: transform 150ms;
 }
 
@@ -125,6 +129,8 @@ input {
   font-size: 1.8rem;
   border: none;
   box-shadow: 0 0.1rem 1.4rem 0 rgba(86, 185, 235, 0.5);
+  border-radius: 4px;
+  outline: none;
 }
 
 input::placeholder {
@@ -133,4 +139,26 @@ input::placeholder {
 
 .hud-timer > h1{
   text-align: center;
+}
+
+.hero {
+  font-size: 6.5rem;
+  font-weight: lighter;
+  letter-spacing: 4px;
+}
+
+.fadeIn {
+  opacity: 0;
+}
+
+@keyframes bg-animation {
+  0% {
+    background-position: 0%;
+  }
+  50% {
+    background-position: 100%;
+  }
+  100% {
+    background-position: 0%;
+  }
 }
