@@ -123,6 +123,10 @@ choices.forEach((choice) => {
         const selectedChoice = e.target;
         const selectedAnswer = selectedChoice.dataset['number'];
 
+         var i = currentQuestion.answer;
+         var ans = document.querySelector(`[data-number="${i}"]`);
+
+
         const classToApply =
             selectedAnswer == currentQuestion.answer ? 'correct' : 'incorrect';
 
@@ -131,10 +135,12 @@ choices.forEach((choice) => {
         }
 
         selectedChoice.parentElement.classList.add(classToApply);
+        ans.parentElement.classList.add("correct");
 
         setTimeout(() => {
             selectedChoice.parentElement.classList.remove(classToApply);
-            getNewQuestion()
+            ans.parentElement.classList.remove("correct");
+            getNewQuestion();
 
         }, 1000);
     });
